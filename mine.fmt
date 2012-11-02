@@ -1,0 +1,35 @@
+%% Misc lhs2TeX directives
+
+%format :-* = "\multimap"
+
+%% %format *** = "\symThree{*}"
+%% %format &&& = "\symThree{\&}"
+
+%format *** = "\times"
+%format &&& = "\smalltriangleup"
+%format ||| = "\smalltriangledown"
+
+%% %format Real = "\Re"
+%format Real = " \mathbb{R} "
+
+%format Rm = Real "^ m"
+%format Rn = Real "^ n"
+
+%% %format * = " \times "
+
+%format :* = " \times "
+
+%% optional double-dollar spelling, to avoid $ confusing emacs latex-mode.
+%format <$$> = <$>
+
+%format <$> = "\mathbin{<\!\!\!\$\!\!\!>}"
+
+% %format :->: = "\mathop{{\to}_{M}}"
+%format :->: = "\mathop{{\to}^{M}}"
+% %format :->: = "\mathop{\stackrel{M}{\to}}"
+
+%format :&& = "\mathbin{:\!\!\smalltriangleup}"
+
+%format VS2 = "VS_2"
+%format VS3 = "VS_3"
+%format VS4 = "VS_4"
