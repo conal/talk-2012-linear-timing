@@ -1,0 +1,5 @@
+
+*   Resolve smalltriangleup, smalltriangledown.
+*   Two-column for `Category` instance derivations, and restore "Uses:".
+*   Maybe return to "`(&&&)`" and "`(***)`".
+*   Look for illustrations of timing analysis.
