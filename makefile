@@ -22,6 +22,6 @@ clean:
 
 web-talk: web-talk-token
 
-web-talk-token: all
-	scp $(TARG).pdf conal@conal.net:/home/conal/web/papers/linear-timing/talk.pdf
+web-talk-token: $(TARG).pdf
+	scp $< conal@conal.net:/home/conal/web/papers/linear-timing/talk.pdf
 	touch web-talk-token
