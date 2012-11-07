@@ -1,3 +1,9 @@
+To do:
+
+*   "But ...": show `(f . id) *** (id . g)` vs `(f *** id) . (id *** g)`.
+*   `MaxPlus` with `VectorSpace` instance
+
+Done:
 
 *   Resolve smalltriangleup, smalltriangledown.
 *   Two-column for `Category` instance derivations, and restore "Uses:".

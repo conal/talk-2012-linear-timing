@@ -2,12 +2,13 @@
 
 %format :-* = "\multimap"
 
-%% %format *** = "\symThree{*}"
-%% %format &&& = "\symThree{\&}"
-
 %format *** = "\mathop{\times}"
 %format &&& = "\mathop{\smalltriangleup}"
 %format ||| = "\mathop{\smalltriangledown}"
+
+%% %format *** = "\symThree{*}"
+%% %format &&& = "\symThree{\&}"
+%% %format ||| = "\symThree{|}"
 
 %% %format Real = "\Re"
 %format Real = " \mathbb{R} "
@@ -29,7 +30,7 @@
 %format :->: = "\mathop{{\to}^{M}}"
 % %format :->: = "\mathop{\stackrel{M}{\to}}"
 
-%format :&& = "\mathbin{:\!\!\smalltriangleup}"
+%format :&& = "\mathbin{:\!\!" &&& "}"
 
 %format VS2 = "VS_2"
 %format VS3 = "VS_3"
@@ -46,8 +47,16 @@
 }
 \calculationcomments
 
-%format ^+^ = "+"
+%% %format ^+^ = "+"
+%format ^+^ = "\mathop{\hat{+}}"
 %format *^ = " \cdot "
 
 %format zeroV = 0
 %format negateV = negate
+
+%format ~> = "\leadsto"
+
+%format Minf = "- \infty"
+
+%% hack: add missing space, e.g., before "{" in data type decl
+%format SPACE = "\ {}"

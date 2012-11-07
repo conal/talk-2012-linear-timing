@@ -19,3 +19,9 @@ see: $(TARG).pdf
 
 clean:
 	rm $(TARG).{tex,dvi,pdf,aux,bbl,blg}
+
+web-talk: web-talk-token
+
+web-talk-token: all
+	scp $(TARG).pdf conal@conal.net:/home/conal/web/papers/linear-timing/talk.pdf
+	touch web-talk-token
