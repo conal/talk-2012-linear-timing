@@ -18,7 +18,7 @@
 %include mine.fmt
 
 % \title{Some fun with linear transformations}
-\title{Circuit timing analysis, linear maps, \\and type class morphisms}
+\title{Circuit timing analysis, linear maps, \\and semantic morphisms}
 \author{Conal Elliott}
 \institute{Tabula}
 % Abbreviate date/venue to fit in infolines space
@@ -131,10 +131,10 @@ Look familiar? \pause Matrix multiplication?
 >   type Scalar (MaxPlus a) = a
 >   a  *^ MP b  = MP (a + b)
 
+\emph{Oops} -- We also need a zero.
+
 |VectorSpace| is overkill.
 Module over a semi-ring suffices.
-
-\emph{Oops} -- We also need a zero.
 
 }
 
@@ -175,17 +175,14 @@ How might we represent linear maps/transformations |a :-* b|?
 \frame{\frametitle{Matrices}
 
 \nc\one{\mathit{1}}
-\begin{itemize}
-
-\item Use a matrix:
 
 $$
 \begin{bmatrix} a_{\one \one} & \cdots & a_{\one m} \\ \vdots & \ddots & \vdots \\ a_{n \one} & \cdots & a_{n m} \end{bmatrix}
 $$
-\item Only handles |Rm :-* Rn| (for ring |R|).
-\item Static typing?
 
-\end{itemize}
+\ 
+
+Static typing?
 
 }
 
@@ -256,6 +253,10 @@ differentiation}} (ICFP 2009).
 > apply (Dot b)    = dot b
 > apply (f :&& g)  = apply f &&& apply g
 
+where, on functions,
+
+> (f &&& g) a = (f a, g a)
+
 Recall:
 
 > data a :-* b where
@@ -304,6 +305,7 @@ One case:
 \end{minipage}}
 \end{center}
 
+(where |f . h &&& g . h == (f . h) &&& (g . h)|).
 Uses:
 
 > (f &&& g) . h == f . h &&& g . h
@@ -326,6 +328,7 @@ Implementation:
 
 \end{minipage}}
 \fbox{\begin{minipage}[t]{0.55\textwidth}
+\vspace{-1ex}
 
 >     apply (Dot (a,b) . (f :&& g))
 > ==  dot (a,b) . (apply f &&& apply g)
@@ -342,12 +345,16 @@ Uses:
 > dot (a,b)              == add . (dot a *** dot b)
 >
 > (k *** h) . (f &&& g)  == k . f &&& h . g
+>
+> apply (f ^+^ g)        == apply f ^+^ apply g
 
+\out{
 Implementation:
 
 >  Dot s      . Dot b      = Dot (s *^ b)
 >  Dot (a,b)  . (f :&& g)  = Dot a . f ^+^ Dot b . g
 
+}
 }
 \frame{\frametitle{Deriving an |Arrow| instance}
 
@@ -408,6 +415,47 @@ Implementation:
 
 > compSnd  (Dot b)    = Dot (zeroV,b)
 > compSnd  (f :&& g)  = compSnd f &&& compSnd g
+
+}
+
+\frame{\frametitle{Adding linear maps}
+
+\begin{center}
+\fbox{\begin{minipage}[t]{0.35\textwidth}
+
+>     apply (Dot b ^+^ Dot c)
+> ==  dot b ^+^ dot c
+> ==  dot (b ^+^ c)
+> ==  apply (Dot (b ^+^ c))
+
+\end{minipage}}
+\fbox{\begin{minipage}[t]{0.5\textwidth}
+
+>     apply ((f :&& g) ^+^ (h :&& k))
+> ==  (apply f &&& apply g) ^+^ (apply h &&& apply k)
+> ==  (apply f ^+^ apply h) &&& (apply g ^+^ apply k)
+> ==  apply ((f ^+^ h) &&& (g ^+^ k))
+
+\end{minipage}}
+\end{center}
+
+Other cases don't type-check.
+
+Uses (on functions):
+
+> (f &&& g) ^+^ (h &&& k) == (f ^+^ h) &&& (g ^+^ k)
+
+}
+
+\frame{\frametitle{What next?}
+
+\begin{itemize}
+
+\item Fancier timing analysis
+\item What else is linear?
+\item More examples of semantic type class morphisms
+
+\end{itemize}
 
 }
 

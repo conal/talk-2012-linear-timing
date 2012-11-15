@@ -1,4 +1,4 @@
-TARG = linear-transformations
+TARG = linear-timing
 
 .PRECIOUS: %.tex %.pdf
 
@@ -18,10 +18,10 @@ see: $(TARG).pdf
 	${showpdf} $(TARG).pdf
 
 clean:
-	rm $(TARG).{tex,dvi,pdf,aux,bbl,blg}
+	rm $(TARG).{tex,pdf,aux,nav,snm,ptb}
 
-web-talk: web-talk-token
+web: web-token
 
-web-talk-token: $(TARG).pdf
-	scp $< conal@conal.net:/home/conal/web/papers/linear-timing/talk.pdf
-	touch web-talk-token
+web-token: $(TARG).pdf
+	scp $< conal@conal.net:/home/conal/web/talks
+	touch $@
