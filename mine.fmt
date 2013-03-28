@@ -2,9 +2,9 @@
 
 %format :-* = "\multimap"
 
-%format *** = "\mathop{\times}"
-%format &&& = "\mathop{\smalltriangleup}"
-%format ||| = "\mathop{\smalltriangledown}"
+%format *** = "\mathbin{\times}"
+%format &&& = "\mathbin{\smalltriangleup}"
+%format ||| = "\mathbin{\smalltriangledown}"
 
 %% %format *** = "\symThree{*}"
 %% %format &&& = "\symThree{\&}"
@@ -26,9 +26,9 @@
 
 %format <$> = "\mathbin{<\!\!\!\$\!\!\!>}"
 
-% %format :->: = "\mathop{{\to}_{M}}"
-%format :->: = "\mathop{{\to}^{M}}"
-% %format :->: = "\mathop{\stackrel{M}{\to}}"
+% %format :->: = "\mathrel{{\to}_{M}}"
+%format :->: = "\mathrel{{\to}^{M}}"
+% %format :->: = "\mathrel{\stackrel{M}{\to}}"
 
 %format :&& = "\mathbin{:\!\!" &&& "}"
 
@@ -48,7 +48,7 @@
 \calculationcomments
 
 %% %format ^+^ = "+"
-%format ^+^ = "\mathop{\hat{+}}"
+%format ^+^ = "\mathbin{\hat{+}}"
 %format *^ = " \cdot "
 
 %format zeroV = 0

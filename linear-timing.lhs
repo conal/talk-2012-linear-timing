@@ -405,6 +405,7 @@ Derivation:
 > dot a      . fst  == dot (a,0)
 >
 > (f &&& g)  . fst  == f . fst &&& g . fst
+
 \end{minipage}}
 \end{center}
 
